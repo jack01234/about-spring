@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd"
+		>
+
+	<context:component-scan base-package="cn.springmvc"/>
+	<!--启用注解-->
+	<context:annotation-config/>
+	<!--配置bean
+	class：bean的全类名，通过反射的方式在IOC容器中创建bean，所以要求bean中必须要有无参数的构造器  -->
+	<bean id="helloWorld" 
+	class="cn.springmvc.service.impl.HelloWorld">
+		<!--注入参数值-->
+		<property name="name" value = "spring"/>
+	</bean>
+	<!--&lt;!&ndash; 通过构造器的方法来配置 &ndash;&gt;-->
+	<!--<bean id="car" class="com.atguigu.spring.helloworld.Car">-->
+		<!--<constructor-arg value="audi"></constructor-arg>-->
+		<!--<constructor-arg value="dsfsd"></constructor-arg>-->
+		<!--<constructor-arg value="20"></constructor-arg>-->
+	<!--</bean>-->
+	<!--&lt;!&ndash;声明需要打印日志的bean  &ndash;&gt;-->
+	<!--<bean id="helloWorldAop"-->
+	<!--class="com.atguigu.spring.aop.HelloWorldAop"-->
+	<!--&gt;</bean>-->
+	<!---->
+	<!--<bean id="stage" class="com.atguigu.spring.helloworld.Stage"-->
+	<!--factory-method="getInstance"-->
+	<!--&gt;-->
+	<!--</bean>-->
+	<!---->
+	<!--&lt;!&ndash; aop配置 &ndash;&gt;-->
+	<!--<aop:config>-->
+		<!--&lt;!&ndash; 定义一个切面 &ndash;&gt;-->
+		<!--<aop:aspect ref="helloWorldAop">-->
+		<!--<aop:pointcut id="helloPoint" expression="execution(* *.hello(..))" />-->
+		<!--&lt;!&ndash;声明前置通知  &ndash;&gt;-->
+		<!--<aop:before pointcut-ref="helloPoint" method="singBefore"/>-->
+		<!--&lt;!&ndash;声明后置通知  &ndash;&gt;-->
+		<!--<aop:after pointcut-ref="helloPoint" method="singAfter"/>-->
+		<!--&lt;!&ndash; 抛出异常之后进行 &ndash;&gt;-->
+		<!--<aop:after-throwing pointcut-ref="helloPoint" method="singAfter"/>-->
+		<!--</aop:aspect>-->
+	<!--</aop:config>-->
+</beans>
