@@ -15,5 +15,12 @@ public class Main {
         HelloWorld helloWorld = (HelloWorld) acx.getBean("helloWorld");
 
         helloWorld.sayHello();
+
+        Car bean = (Car) acx.getBean("car");
+
+        System.out.println(bean.toString());
+
+        Car car = (Car) acx.getBean("car1");
+        System.out.println(car.toString());
     }
 }

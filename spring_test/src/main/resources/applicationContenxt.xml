@@ -14,5 +14,15 @@
 	<bean id="helloWorld" class="com.atguigu.spring.HelloWorld">
 		<property name="name" value="liwenming"/>
 	</bean>
+	<bean id="car" class="com.atguigu.spring.Car">
+		<constructor-arg value="dazhogn" index="0"/>
+		<constructor-arg value="shanghai" index="1"/>
+		<constructor-arg value="1000" index="2"/>
+	</bean>
+	<bean id="car1" class="com.atguigu.spring.Car">
+		<constructor-arg value="dazhogn" type="java.lang.String"/>
+		<constructor-arg value="shanghai" type="java.lang.String"/>
+		<constructor-arg value="300" type="double"/>
+	</bean>
 
 </beans>
