@@ -1,5 +1,7 @@
 package com.atguigu.spring;
 
+import com.atguigu.spring.beans.Person;
+import com.atguigu.spring.beans.PersonList;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,5 +24,11 @@ public class Main {
 
         Car car = (Car) acx.getBean("car1");
         System.out.println(car.toString());
+        Person person = (Person) acx.getBean("person");
+        System.out.println(person.toString());
+        Car car2 = (Car) acx.getBean("car2");
+        System.out.println(car2.toString());
+        PersonList personList = (PersonList) acx.getBean("personlist");
+        System.out.println(personList);
     }
 }

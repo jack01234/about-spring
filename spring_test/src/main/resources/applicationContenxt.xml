@@ -25,4 +25,53 @@
 		<constructor-arg value="300" type="double"/>
 	</bean>
 
+	<bean id="car2" class="com.atguigu.spring.Car">
+		<constructor-arg value="baoma"/>
+		<!--如果字面包含特殊字符需要转义-->
+		<constructor-arg type="java.lang.String">
+			<value><![CDATA[<SHANGHAI>]]></value>
+		</constructor-arg>
+		<constructor-arg type="int">
+			<value>250</value>
+		</constructor-arg>
+	</bean>
+	<bean id="person" class="com.atguigu.spring.beans.Person">
+
+		<property name="name" value="tom"/>
+		<property name="age" value="24" />
+		<property name="car" ref="car"/>
+		<!--级联属性赋值-->
+		<property name="car.maxSpeed" value="10000"/>
+	</bean>
+	<bean id="person1" class="com.atguigu.spring.beans.Person">
+
+		<property name="name" value="tom"/>
+		<property name="age" value="24" />
+		<property name="car" >
+			<!--内部bean-->
+			<bean class="com.atguigu.spring.Car">
+				<constructor-arg value="baoma"/>
+				<!--如果字面包含特殊字符需要转义-->
+				<constructor-arg type="java.lang.String">
+					<value><![CDATA[<SHANGHAI>]]></value>
+				</constructor-arg>
+				<constructor-arg type="int">
+					<value>250</value>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personlist" class="com.atguigu.spring.beans.PersonList">
+		<property name="name" value="tom00"/>
+		<property name="age" value="30"/>
+		<property name="cars">
+			<list>
+				<ref bean="car"/>
+				<ref bean="car1"/>
+			</list>
+		</property>
+		
+	</bean>
+
 </beans>

@@ -9,7 +9,15 @@ public class Car {
     private int price;
     private double maxSpeed;
 
-    public Car(String brand,String corp,int price){
+    public double getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public void setMaxSpeed(double maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public Car(String brand, String corp, int price){
         super();
         this.brand = brand;
         this.corp = corp;
