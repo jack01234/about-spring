@@ -74,4 +74,21 @@
 		
 	</bean>
 
+
+	<!--bean 的自动注入-->
+	<bean id="address" class="com.atguigu.spring.autowire.Address">
+		<property name="city" value="BeiJing"/>
+		<property name="street" value="HuilongGuan"/>
+
+	</bean>
+	<bean class="com.atguigu.spring.autowire.Car" id="car4">
+		<property name="brand" value="audi"/>
+		<property name="price" value="30000"/>
+	</bean>
+
+	<bean id="person4" class="com.atguigu.spring.autowire.Person" autowire="byName">
+		<property name="name" value="TOM"/>
+		<property name="car" ref="car4"/>
+	</bean>
+
 </beans>
