@@ -5,6 +5,8 @@ import com.atguigu.spring.beans.PersonList;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.sql.DataSource;
+
 /**
  * Created by Administrator on 2017/10/25 0025.
  */
@@ -30,5 +32,8 @@ public class Main {
         System.out.println(car2.toString());
         PersonList personList = (PersonList) acx.getBean("personlist");
         System.out.println(personList);
+
+        DataSource dataSource = (DataSource) acx.getBean("dataSource");
+        System.out.println(dataSource);
     }
 }

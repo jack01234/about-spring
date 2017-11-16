@@ -10,7 +10,14 @@
 		http://www.springframework.org/schema/tx
        	http://www.springframework.org/schema/tx/spring-tx.xsd"
 >
-
+	<context:property-placeholder
+	location="classpath:db.properties"/>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${user}"/>
+		<property name="password" value="${password}"/>
+		<property name="driverClass" value="${driverClass}"/>
+		<property name="jdbcUrl" value="${jdbcUrl}"/>
+	</bean>
 	<bean id="helloWorld" class="com.atguigu.spring.HelloWorld">
 		<property name="name" value="liwenming"/>
 	</bean>
@@ -71,7 +78,7 @@
 				<ref bean="car1"/>
 			</list>
 		</property>
-		
+
 	</bean>
 
 
