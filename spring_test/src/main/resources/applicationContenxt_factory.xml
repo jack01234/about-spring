@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx
+       	http://www.springframework.org/schema/tx/spring-tx.xsd"
+>
+	<!--自动扫描：use-default-filters="false"只使用指定的filter-->
+	<context:component-scan base-package="com.atguigu.spring" >
+		<!--排除-->
+		<!--<context:exclude-filter type="annotation" expression=""/>-->
+		<!--包含-->
+		<context:include-filter type="annotation" expression="com.atguigu.spring.annotation"/>
+	</context:component-scan>
+<!--静态工厂配置-->
+	<bean id="car" class="com.atguigu.spring.factory.StaticFactory" factory-method="getCar">
+		<constructor-arg value="aodi"/>
+	</bean>
+	<!--工厂实例-->
+	<bean id="instanceFactory" class="com.atguigu.spring.factory.InstanceFactory"/>
+	<!--实例工厂方法-->
+	<bean id="car1" factory-bean="instanceFactory" factory-method="getCar">
+		<constructor-arg value="ford"/>
+	</bean>
+	<!--factoryBean 配置的BEAN虽然属性的值已经设置为了123466但是它的获取的bean依然是没有改变之前的
+	-->
+	<bean id="carBeanFactory" class="com.atguigu.spring.factory.CarBeanFactory">
+		<property name="brand" value="123466"/>
+	</bean>
+
+</beans>

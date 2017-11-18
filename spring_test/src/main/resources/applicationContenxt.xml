@@ -98,4 +98,12 @@
 		<property name="car" ref="car4"/>
 	</bean>
 
+	<bean id="car5" class="com.atguigu.spring.autowire.Car"
+	init-method="init" destroy-method="destory">
+		<property name="brand" value="#{car4.brand}"/>
+		<property name="price" value="#{car4.price}"/>
+		<property name="zhouchang" value="#{T(java.lang.Math).PI*80}"/>
+	</bean>
+	<!--配置处理器-->
+	<bean class="com.atguigu.spring.processor.MyBeanProcessor"/>
 </beans>
