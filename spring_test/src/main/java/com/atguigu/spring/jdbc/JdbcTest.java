@@ -8,12 +8,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JdbcTest {
 
@@ -71,5 +74,21 @@ public class JdbcTest {
         Long aLong = jdbcTemplate.queryForObject(countSql, Long.class);
         System.out.println("统计数量："+aLong);
 
+    }
+
+    @Test
+    public void jumingTest(){
+        String sql="insert into user(id,name,address) values(:id,:name,:address)";
+        Map<String,Object> maps = new HashMap<String, Object>();
+        User user = new User();
+        user.setId(10);
+        user.setName("llllllllll");
+        user.setAddress("aaaaaaaaaaaa");
+        SqlParameterSource source = new BeanPropertySqlParameterSource(user);
+//        maps.put("id",10);
+//        maps.put("name","junhao");
+//        maps.put("address","china");
+        int i = jdbcTemplate.update(sql,source);
+        System.out.println(">>>>>>>>>>>>>>>>"+i);
     }
 }

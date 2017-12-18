@@ -1,10 +1,9 @@
-package com.atguigu.spring.beans;
+package com.wmli.com.wmli.model;
 
 import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private static final long serialVersionUID = -6778798943719939994L;
     private int id;
     private String name;
     private String address;
